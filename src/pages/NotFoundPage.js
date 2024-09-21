@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Heading, Text, Button, Image, VStack, useColorModeValue } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import CogImage from "../assets/cog-svgrepo-com.svg";
+import NotFoundImage from "../assets/bomb-svgrepo-com.svg";
 
-function ProfilePage() {
+function NotFoundPage() {
   const bg = useColorModeValue("gray.100", "gray.800");
-  const headingColor = useColorModeValue("orange.500", "orange.300");
+  const headingColor = useColorModeValue("teal.500", "teal.300");
   const textColor = useColorModeValue("gray.600", "gray.300");
 
   return (
@@ -14,23 +14,23 @@ function ProfilePage() {
       justifyContent="center"
       alignItems="center"
       height="100vh"
-      bg={bg} 
+      bg={bg}
       textAlign="center"
       p={4}
     >
       <VStack spacing={6}>
         <Image
-          src={CogImage} 
-          alt="Page Under Construction"
-          boxSize="200px"
+          src={NotFoundImage}
+          alt="404 - Not Found"
+          boxSize="300px"
         />
         <Heading as="h1" size="2xl" color={headingColor}>
-          Profile Page Under Construction
+          404 - Page Not Found
         </Heading>
         <Text fontSize="lg" color={textColor}>
-          We're working hard to bring this page to life! Please check back soon.
+          Oops! The page you are looking for does not exist.
         </Text>
-        <Button as={Link} to="/" colorScheme="orange" size="lg">
+        <Button as={Link} to="/" colorScheme="teal" size="lg">
           Back to Home
         </Button>
       </VStack>
@@ -38,4 +38,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default NotFoundPage;

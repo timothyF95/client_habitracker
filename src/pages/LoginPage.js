@@ -1,14 +1,32 @@
-// src/components/LoginPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { Box, Button, Input, FormControl, FormLabel, Heading, Stack, useColorModeValue } from "@chakra-ui/react";
+import { login } from "../services/apiService"; 
 
 function LoginPage({ onLogin }) {
-  const [username, setUsername] = useState("admin");
-  const [password, setPassword] = useState("thisisapassord123");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const envUsername = process.env.REACT_APP_USERNAME;
+    const envPassword = process.env.REACT_APP_PASSWORD;
+    if (envUsername) {
+      setUsername(envUsername);
+    };
+    if (envPassword) {
+      setPassword(envPassword);
+    };
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin(username, password); // Call the login handler
+    try {
+      await login(username, password);
+
+      onLogin(username, password);
+    } catch (err) {
+      setError("Login failed. Please check your credentials.");
+    }
   };
 
   const formBg = useColorModeValue("white", "gray.700");

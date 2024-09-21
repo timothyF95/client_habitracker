@@ -12,7 +12,7 @@ function Navbar({ onLogout }) {
 
   const handleLogout = () => {
     onLogout();
-    navigate("/login"); // Redirect to login page after logout
+    navigate("/login");
   };
 
   return (
@@ -24,6 +24,7 @@ function Navbar({ onLogout }) {
           <Link style={{ color }} to="/todo">To-Do</Link>
           <Link style={{ color }} to="/pulse">Pulse</Link>
           <Link style={{ color }} to="/timer">Timer</Link>
+          <Link style={{ color }} to="/streak">Streak</Link>
           <Link style={{ color }} to="/profile">Profile</Link>
         </HStack>
 
