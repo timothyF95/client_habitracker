@@ -5,7 +5,7 @@ import { login } from "../services/apiService";
 function LoginPage({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const envUsername = process.env.REACT_APP_USERNAME;
@@ -26,6 +26,7 @@ function LoginPage({ onLogin }) {
       onLogin(username, password);
     } catch (err) {
       setError("Login failed. Please check your credentials.");
+      console.log('Error: ', error)
     }
   };
 
